@@ -66,7 +66,9 @@ body {
   background-color: #2b6be9;
   box-shadow: 0px 3px 5px rgba(168, 168, 168, 0.38);
 }
-.to-do-header button:active {
+.to-do-header button:active,
+.delete-btn:active,
+.Edit-btn:active {
   transform: scale(0.8);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.45);
 }

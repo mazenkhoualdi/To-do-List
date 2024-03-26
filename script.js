@@ -18,10 +18,13 @@ let tasks = [
   },
 ];
 
-//display tasks
+/*****************************************
+DisplayTasks
+*****************************************/
 
 let container = document.querySelector(".tasks-container");
 function DisplayTasks() {
+  let counter = 0;
   container.innerHTML = "";
   for (task of tasks) {
     container.innerHTML += `
@@ -31,42 +34,42 @@ function DisplayTasks() {
         <span id="task-date"><i class="fa-regular fa-calendar"></i>${task.date}</span>
       </div>
       <div class="crud-button">
-        <button style="background-color: blue" title="Edit">
+        <button  class="Edit-btn" onclick="EditTask(${counter})" style="background-color: blue" title="Edit">
           <i class="fa-solid fa-pen"></i>
         </button>
         <button style="background-color: green" title="Confirm">
           <i class="fa-solid fa-circle-check"></i>
         </button>
-        <button style="background-color: red" title="Delete">
+        <button class="delete-btn" onclick="DeleteTask(${counter})" style="background-color: red" title="Delete">
           <i class="fa-solid fa-trash"></i>
         </button>
       </div>
     </div>
     `;
+    counter += 1;
   }
 }
 DisplayTasks();
 
-//add task
+/*****************************************
+add task
+*****************************************/
 
 Add_Btn = document.getElementById("add-btn");
 input_task = document.getElementById("task-input");
-Add_Btn.addEventListener("click", () => {
-  //get current Date
-  let currentHour = new Date();
-  let date =
-    currentHour.getDate() +
-    "/" +
-    (currentHour.getMonth() + 1) +
-    "/" +
-    currentHour.getFullYear() +
-    "" +
-    "-" +
-    "" +
-    currentHour.getHours() +
-    ":" +
-    currentHour.getMinutes();
-  console.log(Date);
+Add_Btn.addEventListener("click", async () => {
+  // add date
+  const { value: date } = await Swal.fire({
+    title: "select date",
+    input: "date",
+    didOpen: () => {
+      const today = new Date().toISOString();
+      Swal.getInput().min = today.split("T")[0];
+    },
+  });
+  if (date) {
+    Swal.fire("chosen date", date);
+  }
   //new obj
   let obj = {
     title: input_task.value,
@@ -80,3 +83,50 @@ Add_Btn.addEventListener("click", () => {
     input_task.value = "";
   }, 2000);
 });
+
+/*****************************************
+Delete task
+*****************************************/
+
+function DeleteTask(counter) {
+  let taskIndex = tasks[counter];
+  console.log(counter);
+  Swal.fire({
+    title: "Do you want to delete :" + taskIndex.title + "?",
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: "Yes",
+    denyButtonText: `No`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      Swal.fire("Deleted!", "", "success");
+      let task = tasks[counter];
+      tasks.splice(counter, 1);
+      DisplayTasks();
+    } else if (result.isDenied) {
+      Swal.fire("Changes are not saved", "", "info");
+    }
+  });
+}
+
+/*****************************************
+Edit task
+*****************************************/
+async function EditTask(counter) {
+  const { value: text } = await Swal.fire({
+    input: "textarea",
+    inputLabel: "task",
+    inputPlaceholder: "Type your Task here...",
+    inputAttributes: {
+      "aria-label": "Type your message here",
+    },
+    showCancelButton: true,
+  });
+  if (text) {
+    Swal.fire("Done");
+    let ETask = tasks[counter];
+    ETask.title = text;
+    DisplayTasks();
+  }
+}

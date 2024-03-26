@@ -1,0 +1,110 @@
+body {
+  background-color: #2061cb;
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+#title {
+  font-style: inherit;
+  text-align: center;
+  font-weight: bolder;
+  padding-top: 40px;
+  color: #98e6d8;
+}
+#title span {
+  font-style: inherit;
+  text-align: center;
+  font-weight: bolder;
+  padding-top: 40px;
+  color: #6aafdb;
+}
+.container-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  /*scroll*/
+  /* max-height: 420px;
+  overflow: scroll;*/
+  width: 70%;
+  background-color: #ffffff;
+  box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+    10px 10px 70px rgba(0, 0, 0, 0.25), inset 5px 5px 10px rgba(0, 0, 0, 0.05),
+    inset 5px 5px 20px rgba(255, 255, 255, 0.2),
+    inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+  height: auto;
+  margin-top: 50px;
+  border-radius: 40px;
+}
+.to-do-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+}
+.to-do-header input {
+  width: 80%;
+  outline: none;
+  font-weight: bold;
+  font-style: italic;
+  border: 1px solid #a8bdd5;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 30px;
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.25),
+    inset 2px 2px 5px rgba(0, 0, 0, 0.5) inset,
+    inset -3px -3px -5px rgba(0, 0, 0, 0.5);
+}
+.to-do-header button {
+  padding: 8px;
+  margin-left: 5px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #2b6be9;
+  box-shadow: 0px 3px 5px rgba(168, 168, 168, 0.38);
+}
+.to-do-header button:active {
+  transform: scale(0.8);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.45);
+}
+#task-date {
+  font-weight: bold;
+}
+.task {
+  display: flex;
+  background-color: #c3e1e3;
+  height: 30px;
+  margin: 20px;
+  padding: 15px;
+  border-bottom: 1px solid black;
+  border-radius: 10px;
+  transition: box-shadow 0.2s;
+}
+.task:hover {
+  box-shadow: 0 3px 5px rgba(97, 97, 97, 0.8);
+}
+.info-label {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.info-label h4 {
+  margin: 0;
+  padding: 0;
+}
+.crud-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 20%;
+}
+.crud-button button {
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: none;
+}

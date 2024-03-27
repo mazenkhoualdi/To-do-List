@@ -68,12 +68,16 @@ body {
 }
 .to-do-header button:active,
 .delete-btn:active,
-.Edit-btn:active {
+.Edit-btn:active,
+.Done-btn:active {
   transform: scale(0.8);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.45);
 }
 #task-date {
   font-weight: bold;
+}
+.back-done {
+  background-color: rgb(88, 228, 88) !important;
 }
 .task {
   display: flex;
@@ -109,4 +113,12 @@ body {
   width: 40px;
   height: 40px;
   border: none;
+}
+#compteur {
+  font-weight: bold;
+  float: right;
+  padding-right: 30px;
+  margin-bottom: 15px;
+  font-family: cursive;
+  font-style: italic;
 }
